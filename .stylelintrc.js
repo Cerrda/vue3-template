@@ -22,40 +22,15 @@ module.exports = {
     'docs/'
   ],
   overrides: [
-    // {
-    //   files: ['**/*.(scss|css)'],
-    //   customSyntax: 'postcss-scss',
-    // },
     {
       files: ['**/*.(html|vue)'],
       customSyntax: 'postcss-html'
     }
   ],
   rules: {
-    // "selector-class-pattern": [ // 命名规范 -
-    //     "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
-    //     {
-    //         "message": "Expected class selector to be kebab-case"
-    //     }
-    // ],
-    // "selector-pseudo-class-no-unknown": [
-    //   true,
-    //   {
-    //     ignorePseudoClasses:['export']
-    //   }
-    // ]
-    // "string-quotes":"single", // 单引号
-    // "at-rule-empty-line-before": null,
-    // "at-rule-no-unknown":null,
-    // "at-rule-name-case": "lower",// 指定@规则名的大小写
-    // "length-zero-no-unit": true,  // 禁止零长度的单位（可自动修复）
-    // "shorthand-property-no-redundant-values": true, // 简写属性
-    // "number-leading-zero": "never", // 小数不带0
-    // "declaration-block-no-duplicate-properties": true, // 禁止声明快重复属性
-    // "no-descending-specificity": true, // 禁止在具有较高优先级的选择器后出现被其覆盖的较低优先级的选择器。
-    // "selector-max-id": 0, // 限制一个选择器中 ID 选择器的数量
-    // "max-nesting-depth": 3,
     'scss/at-import-partial-extension': null,
+    'rule-empty-line-before': 'never',
+    'declaration-empty-line-before': 'never',
     'scss/dollar-variable-pattern': null, //解决类名不允许下划线
     'scss/double-slash-comment-whitespace-inside': null, // 解决双斜杠注释后要有一个空格
     'selector-class-pattern': null,
@@ -93,7 +68,6 @@ module.exports = {
     ],
     'indentation': [2],
     'order/properties-order': [
-      // 规则顺序
       'position',
       'content',
       'top',
@@ -102,6 +76,8 @@ module.exports = {
       'left',
       'float',
       'display',
+      'justify-content',
+      'align-items',
       'margin',
       'margin-top',
       'margin-right',
