@@ -7,6 +7,7 @@ import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import postcssPxToViewport from 'postcss-px-to-viewport-8-plugin'
 import { loadEnv } from 'vite'
+import hpx2vh from './hpx2vh'
 
 export default defineConfig((mode) => {
   // eslint-disable-next-line
@@ -34,7 +35,8 @@ export default defineConfig((mode) => {
         plugins: [
           postcssPxToViewport({
             viewportWidth: env.VITE_DESIGN_WIDTH
-          })
+          }),
+          hpx2vh(env.VITE_DESIGN_WIDTH, env.VITE_DESIGN_HEIGHT)
         ]
       }
     },
