@@ -263,3 +263,5 @@ pnpm run dev
    const res = await queryMysqlAPI()
    console.log('🚀 ~ res:', res)
    ```
+
+如需了解更多，可查看bdv_control项目的page下面的deviceDeatils项目相关代码
