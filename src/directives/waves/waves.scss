@@ -1,0 +1,23 @@
+.waves-ripple,
+.waves-ripple-more {
+  position: absolute;
+  border-radius: 100%;
+  pointer-events: none;
+  transform: scale(0);
+  user-select: none;
+}
+.waves-ripple.z-active-keep,
+.waves-ripple-more.z-active-more {
+  transform: scale(2);
+  transition: transform 0.6s ease-out;
+}
+.waves-ripple-more.z-active-more {
+  opacity: 0.8;
+}
+.waves-ripple.z-active {
+  opacity: 0;
+  transform: scale(2);
+  transition:
+    opacity 1.2s ease-out,
+    transform 0.6s ease-out;
+}

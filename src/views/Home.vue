@@ -24,6 +24,7 @@ setInterval(() => {
   <div class="box"></div>
   <!-- gap是在设计稿中单个数字宽度的px数。如果传入的number是小数会自动保留两位处理 -->
   <CountTo class="count-to" :number="number" gap="14"></CountTo>
+  <div v-waves:keep="'linear-gradient(219.31deg, #0ef 0%, #07f 100%)'" class="waves"></div>
 </template>
 
 <style scoped lang="scss">
@@ -34,5 +35,12 @@ setInterval(() => {
 }
 .count-to {
   font-size: 24px;
+}
+.waves {
+  border: 10px solid #ccc;
+  padding: 20px;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
 }
 </style>
