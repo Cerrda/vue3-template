@@ -11,7 +11,9 @@ module.exports = (viewportWidth, viewportHeight) => {
     'padding-bottom',
     'line-height',
     'max-height',
-    'min-height'
+    'min-height',
+    'top',
+    'bottom'
   ])
 
   // 特殊处理的 CSS 属性集合
