@@ -4,6 +4,7 @@
   border-radius: 100%;
   pointer-events: none;
   transform: scale(0);
+  z-index: -1;
   user-select: none;
 }
 .waves-ripple.z-active-keep,
