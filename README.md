@@ -3,8 +3,10 @@
 ## 推荐使用pnpm：
 
 ```js
+// 项目要求 node > 16
 pnpm i
 pnpm run dev
+pnpm run build
 ```
 
 ## 模板已包含以下依赖：
@@ -44,7 +46,7 @@ pnpm run dev
 
    #### 效果示例：
 
-   ![Alt text](C:\work\vue3-template\assets\count_to.gif)
+   ![Alt text](./src/assets/imgs/count_to.gif)
 
 2. ### SvgIcon  更方便的使用svg
 
@@ -52,15 +54,50 @@ pnpm run dev
 
    1. #### 在/src/assets/icons中新建一个cell.svg文件，将相关的svg代码复制其中
 
-   2. #### 在需要使用svg的地方使用，默认大小为16px，可通过传入width和height改变，svg颜色默认为cell.svg文件中代码指定的颜色，可通过传入
+   2. #### 在需要使用svg的地方使用，默认大小为16px，可通过传入width和height改变，svg颜色默认为cell.svg文件中代码指定的颜色，未指定时可
    
-      #### fill改变
+      #### 通过传入fill改变
 
       ```js
       <SvgIcon name="cell" width="24" height="24" fill="#fff"></SvgIcon>
       ```
 
-## 项目初始化
+## 模板封装了以下指令：
+
+### v-waves  点击波纹效果
+
+#### 使用方法举例：
+
+```js
+// 第一种模式：波纹保留，使用场景：带有默认选中的单选组。
+<div
+  v-for="item in 5"
+  :key="item"
+  class="item"
+  :class="{ active: item - 1 === active }"
+  v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)', 'keep']"></div>
+// v-waves数组接收三个参数：第一个为波纹的背景色。第二个为模式，'keep'为波纹保留模式，第三个为在keep模式下的单选组的分组名，默认为‘default’，其中组内className.includes('active')为true的为默认选中状态，例中为第一个div默认选中。
+```
+
+#### 效果示例：
+
+![](./src/assets/imgs/waves_keep.gif)
+
+```js
+// 第二种模式：不保留，使用场景：丰富点击效果。
+<div
+  v-for="item in 5"
+  :key="item"
+  class="item"
+  v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)']"></div>
+// v-waves只需要填写背景色即可
+```
+
+#### 效果示例：
+
+![](./src/assets/imgs/waves.gif)
+
+## 项目初始化：
 
 项目的自适应方案为vw+vh+flex，直接复制粘贴设计稿中元素的大小相关的css无需额外考虑屏幕适配
 
@@ -128,7 +165,9 @@ pnpm run dev
          'padding-bottom',
          'line-height',
          'max-height',
-         'min-height'
+         'min-height',
+         'top',
+         'bottom'
        ])
      
        // 特殊处理的 CSS 属性集合
@@ -183,7 +222,7 @@ pnpm run dev
      #### 以上是将高度相关css属性单位转成vh的postcss插件的代码，可能不完善，欢迎改进。如果不想使用vh作为高度相关css的单位可注释
 
      #### vite.config.js中对插件的使用
-
+     
      ```js
      css: {
            postcss: {

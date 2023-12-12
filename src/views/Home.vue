@@ -17,6 +17,8 @@ const number = ref()
 setInterval(() => {
   number.value = Math.floor(Math.random() * 1000)
 }, 1000)
+
+const active = ref(0)
 </script>
 
 <template>
@@ -24,11 +26,25 @@ setInterval(() => {
   <div class="box"></div>
   <!-- gap是在设计稿中单个数字宽度的px数。如果传入的number是小数会自动保留两位处理 -->
   <CountTo class="count-to" :number="number" gap="14"></CountTo>
-  <div v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)', 'keep']" class="waves active"></div>
-  <div v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)', 'keep']" class="waves"></div>
-  <div v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)', 'keep']" class="waves"></div>
-  <div v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)', 'keep']" class="waves"></div>
-  <div v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)', 'keep']" class="waves"></div>
+  <div class="list">
+    <div
+      v-for="item in 5"
+      :key="item"
+      class="item"
+      :class="{ active: item - 1 === active }"
+      v-waves="['pink', 'keep', 'list1']"></div>
+  </div>
+  <div class="list">
+    <div
+      v-for="item in 5"
+      :key="item"
+      class="item"
+      :class="{ active: item - 1 === active }"
+      v-waves="['pink', 'keep', 'list2']"></div>
+  </div>
+  <div class="list">
+    <div v-for="item in 5" :key="item" class="item" :class="{ active: item - 1 === active }" v-waves="['pink']"></div>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -40,11 +56,15 @@ setInterval(() => {
 .count-to {
   font-size: 24px;
 }
-.waves {
-  border: 10px solid #ccc;
+.list {
+  display: flex;
+  gap: 10px;
   padding: 20px;
-  width: 200px;
-  height: 200px;
   cursor: pointer;
+  div {
+    border: 1px solid pink;
+    width: 40px;
+    height: 40px;
+  }
 }
 </style>
