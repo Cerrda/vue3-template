@@ -24,7 +24,7 @@ function createRipper({ el, e, binding, keep, group }) {
       const waves = document.querySelectorAll(`.z-active-keep[data-group="${group}"]`)
       const shallowWaves = document.querySelector(`.z-active-more[data-group="${group}"]`)
       if (!moreRipple && waves.length > 0) {
-        shallowWaves && shallowWaves.remove()
+        shallowWaves?.remove()
         waves[0].remove()
       }
     }
@@ -47,9 +47,11 @@ function createRipper({ el, e, binding, keep, group }) {
   }
 
   ripple.style.background = binding.value[0]
-  ripple.className = moreRipple
-    ? `waves-ripple-more z-active-more`
-    : `waves-ripple ${keep ? 'z-active-keep' : 'z-active'}`
+  if (moreRipple) {
+    ripple.className = `waves-ripple-more z-active-more`
+  } else {
+    ripple.className = `waves-ripple ${keep ? 'z-active-keep' : 'z-active'}`
+  }
   ripple.setAttribute('data-group', group)
 }
 
