@@ -35,7 +35,7 @@ exportAPI()
       :key="item"
       class="item"
       :class="{ active: item - 1 === active }"
-      v-waves="['pink', 'keep', 'list1']"></div>
+      v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)', 'keep', 'list1']"></div>
   </div>
   <div class="list">
     <div
@@ -43,10 +43,15 @@ exportAPI()
       :key="item"
       class="item"
       :class="{ active: item - 1 === active }"
-      v-waves="['pink', 'keep', 'list2']"></div>
+      v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)', 'keep', 'list2']"></div>
   </div>
   <div class="list">
-    <div v-for="item in 5" :key="item" class="item" :class="{ active: item - 1 === active }" v-waves="['pink']"></div>
+    <div
+      v-for="item in 5"
+      :key="item"
+      class="item"
+      :class="{ active: item - 1 === active }"
+      v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)']"></div>
   </div>
 </template>
 
