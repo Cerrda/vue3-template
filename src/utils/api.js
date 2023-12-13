@@ -19,9 +19,8 @@ export const exportAPI = async () => {
   const res = await exportOrImport({ url: 'export', data: sql })
   if (res.status !== 200) return
 
-  let blob = res.data
   let a = document.createElement('a')
-  let href = window.URL.createObjectURL(blob)
+  const href = window.URL.createObjectURL(res.data)
   a.href = href
   a.download = res.headers['content-disposition'].match(/=(\S*)/)[1]
   a.click()
