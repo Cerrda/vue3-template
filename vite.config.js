@@ -59,6 +59,10 @@ export default defineConfig((mode) => {
         '/brdcontrol-service': {
           target: 'http://192.168.5.213:5555',
           changeOrigin: true
+        },
+        '/api/rssi': {
+          target: 'http://192.168.5.150:5555',
+          changeOrigin: true
         }
       }
     }

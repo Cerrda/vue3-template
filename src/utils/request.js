@@ -2,7 +2,7 @@ import axios from 'axios'
 // mysql查询 -------------------------------------------------------------------------------------------
 const queryMysqlEntity = axios.create({
   baseURL: '/brdcontrol-service/getRequestServer',
-  timeout: 5000,
+  timeout: 10000,
   method: 'POST',
   headers: { 'content-type': 'application/x-www-form-urlencoded' }
 })
@@ -39,14 +39,14 @@ export function queryMysql(sql, type) {
 // 中间层查询 -------------------------------------------------------------------------------------------
 const queryMiddlePreEntity = axios.create({
   baseURL: '/brdcontrol-service/data/prep',
-  timeout: 5000,
+  timeout: 10000,
   method: 'POST',
   headers: { 'content-type': 'application/json' }
 })
 
 const queryMiddleEntity = axios.create({
   baseURL: '/brdcontrol-service/data/query',
-  timeout: 5000,
+  timeout: 10000,
   method: 'POST',
   headers: { 'content-type': 'application/json' }
 })
@@ -86,4 +86,16 @@ export async function queryMiddle(sql, tblId) {
       data
     })
   }
+}
+// 导入导出 -------------------------------------------------------------------------------------------
+const exportOrImportEntity = axios.create({
+  baseURL: '/api/rssi/task/',
+  timeout: 10000,
+  method: 'POST',
+  headers: { 'content-type': 'application/text;charset=utf-8' },
+  responseType: 'blob'
+})
+
+export function exportOrImport({ url, data }) {
+  return exportOrImportEntity({ url, data })
 }

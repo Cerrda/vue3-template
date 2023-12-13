@@ -1,9 +1,10 @@
 <script setup>
 import CountTo from '@/components/CountTo.vue'
 import SvgIcon from '@/components/SvgIcon.vue'
-import { queryMysqlAPI, queryMiddleAPI } from '@/utils/api.js'
+import { queryMysqlAPI, queryMiddleAPI, exportAPI } from '@/utils/api.js'
 import { ref } from 'vue'
 
+// 测试queryMysql和queryMiddle，需要213的sid
 async function query() {
   const res = await queryMysqlAPI()
   console.log('🚀 ~ res:', res)
@@ -12,13 +13,15 @@ async function query() {
   console.log('🚀 ~ res1:', res1)
 }
 query()
-
+// 测试CountTo组件
 const number = ref()
 setInterval(() => {
   number.value = Math.floor(Math.random() * 1000)
 }, 1000)
-
+// 测试waves指令
 const active = ref(0)
+// 测试导出接口
+exportAPI()
 </script>
 
 <template>
