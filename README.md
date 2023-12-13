@@ -121,7 +121,7 @@ pnpm run build
        }
    ```
 
-3. ### 项目已配置好postcss-px-to-viewport-plugin，但是该postcss插件是将css中所有的px转为vh将会带来以下问题
+3. ### 项目已配置好postcss-px-to-viewport-plugin，但是该postcss插件是将css中所有的px转为vw将会带来以下问题
 
    - #### 无法识别js中动态添加的css，无法识别行内css，解决办法如下
 
