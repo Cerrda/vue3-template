@@ -30,7 +30,7 @@ pnpm run build
 
 ## 模板封装了以下组件：
 
-1. ### CountTo  数字滚动效果
+1. ### CountTo 数字滚动效果
 
    #### 使用方法举例：
 
@@ -39,7 +39,7 @@ pnpm run build
    setInterval(() => {
      number.value = Math.floor(Math.random() * 1000)
    }, 1000)
-   
+
    <!-- fontSize为字体大小，必填。如果传入的number是小数会自动保留两位处理 -->
    <CountTo class="count-to" :number="number" fontSize="24"></CountTo>
    ```
@@ -48,23 +48,23 @@ pnpm run build
 
    ![Alt text](./src/assets/imgs/count_to.gif)
 
-2. ### SvgIcon  更方便的使用svg
+2. ### SvgIcon 更方便的使用svg
 
    #### 使用方法举例：
 
    1. #### 在/src/assets/icons中新建一个cell.svg文件，将相关的svg代码复制其中
 
    2. #### 在需要使用svg的地方使用，默认大小为16px，可通过传入width和height改变，svg颜色默认为cell.svg文件中代码指定的颜色，未指定时可
-   
+
       #### 通过传入fill改变
 
       ```js
-      <SvgIcon name="cell" width="24" height="24" fill="#fff"></SvgIcon>
+      <SvgIcon name='cell' width='24' height='24' fill='#fff'></SvgIcon>
       ```
 
 ## 模板封装了以下指令：
 
-### v-waves  点击波纹效果
+### v-waves 点击波纹效果
 
 #### 使用方法举例：
 
@@ -121,7 +121,7 @@ pnpm run build
        }
    ```
 
-3. ### 项目已配置好postcss-px-to-viewport-plugin，但是该postcss插件是将css中所有的px转为vh将会带来以下问题
+3. ### 项目已配置好postcss-px-to-viewport-plugin，但是该postcss插件是将css中所有的px转为vw将会带来以下问题
 
    - #### 无法识别js中动态添加的css，无法识别行内css，解决办法如下
 
@@ -140,7 +140,7 @@ pnpm run build
      export const epx = (size) => {
        let clientWidth = window.innerWidth
        let scale = clientWidth / import.meta.env.VITE_DESIGN_WIDTH
-     
+
        return Number((size * scale).toFixed(5))
      }
      ```
@@ -169,22 +169,22 @@ pnpm run build
          'top',
          'bottom'
        ])
-     
+
        // 特殊处理的 CSS 属性集合
        const specialCssAttr = new Set(['margin', 'padding'])
-     
+
        // 将数字精确到指定小数位数的函数
        const toFixed = (number, precision) => {
          const multiplier = 10 ** (precision + 1)
          const wholeNumber = Math.floor(number * multiplier)
          return (Math.round(wholeNumber / 10) * 10) / multiplier
        }
-     
+
        // 将 vw 转换为 vh 单位的函数
        const toVh = (vw) => {
          return toFixed((((vw.split('vw')[0] / 100) * viewportWidth) / viewportHeight) * 100, 5)
        }
-     
+
        return {
          postcssPlugin: 'hpx2vh',
          Once(css) {
@@ -192,18 +192,18 @@ pnpm run build
              rule.walkDecls((decl) => {
                // 如果不是可转换的 CSS 属性或值中不包含 'vw'，则不进行处理
                if (!transCssAttr.has(decl.prop) || decl.value.indexOf('vw') === -1) return
-     
+
                if (specialCssAttr.has(decl.prop)) {
                  // 对特殊属性进行处理
                  const values = decl.value.split(' ')
                  const len = values.length
                  let newValue = `${toVh(values[0])}vh`
-     
+
                  if (len === 1) newValue += ` ${values[0]}`
                  if (len >= 2) newValue += ` ${values[1]}`
                  if (len >= 3) newValue += ` ${toVh(values[2])}vh`
                  if (len === 4) newValue += ` ${values[3]}`
-     
+
                  decl.value = newValue
                } else {
                  // 对其他属性进行处理
@@ -214,7 +214,7 @@ pnpm run build
          }
        }
      }
-     
+
      // eslint-disable-next-line
      module.exports.postcss = true
      ```
@@ -222,18 +222,18 @@ pnpm run build
      #### 以上是将高度相关css属性单位转成vh的postcss插件的代码，可能不完善，欢迎改进。如果不想使用vh作为高度相关css的单位可注释
 
      #### vite.config.js中对插件的使用
-     
+
      ```js
      css: {
-           postcss: {
-             plugins: [
-               postcssPxToViewport({
-                 viewportWidth: env.VITE_DESIGN_WIDTH
-               }),
-               // hpx2vh(env.VITE_DESIGN_WIDTH, env.VITE_DESIGN_HEIGHT)
-             ]
-           }
-         }
+       postcss: {
+         plugins: [
+           postcssPxToViewport({
+             viewportWidth: env.VITE_DESIGN_WIDTH
+           })
+           // hpx2vh(env.VITE_DESIGN_WIDTH, env.VITE_DESIGN_HEIGHT)
+         ]
+       }
+     }
      ```
 
 4. ### 网络请求相关
@@ -251,13 +251,13 @@ pnpm run build
      method: 'POST',
      headers: { 'content-type': 'application/x-www-form-urlencoded' }
    })
-   
+
    queryMysqlEntity.interceptors.response.use(function (res) {
      if (res.status === 200) {
        return res.data
      }
    })
-   
+
    /**
     * mysql查询
     * @param {String} sql sql语句
@@ -276,7 +276,7 @@ pnpm run build
          requesttype: 'get'
        })
      }
-   
+
      return queryMysqlEntity({
        data
      })
@@ -289,16 +289,16 @@ pnpm run build
    // 建议将业务逻辑和数据获取逻辑隔离，增加代码可读性和可维护性，例如该项目模板将所有的请求都放在了api.js中
    // api.js
    import { queryMysq } from '@/utils/request.js'
-   
+
    export const queryMysqlAPI = (name) => {
      const sql = `select * from cfg_tob_dnnproject_mgr`
-   
+
      return queryMysql(sql)
    }
-   
+
    // 使用时
    import { queryMysqlAPI } from '@/utils/api.js'
-   
+
    const res = await queryMysqlAPI()
    console.log('🚀 ~ res:', res)
    ```
