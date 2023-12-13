@@ -27,7 +27,7 @@ exportAPI()
 <template>
   <SvgIcon name="cell"></SvgIcon>
   <!-- gap是在设计稿中单个数字宽度的px数。如果传入的number是小数会自动保留两位处理 -->
-  <CountTo class="count-to" :number="number" fontSize="36"></CountTo>
+  <CountTo :number="number" fontSize="36"></CountTo>
   <div class="list">
     <div
       v-for="item in 5"
