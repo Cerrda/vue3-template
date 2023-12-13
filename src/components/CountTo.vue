@@ -3,8 +3,8 @@ import { ref, watch } from 'vue'
 import { px2vw } from '@/utils/index'
 import { v4 as uuid } from 'uuid'
 
-const props = defineProps(['number', 'gap'])
-
+const props = defineProps(['number', 'fontSize'])
+const gap = props.fontSize / 1.72
 const nowNum = ref('0')
 let pointAt = 999
 
@@ -21,7 +21,7 @@ watch(
 )
 
 function getLeft(index) {
-  return pointAt !== -1 && index > pointAt ? px2vw(props.gap * index - 0.57 * props.gap) : px2vw(props.gap * index)
+  return pointAt !== -1 && index > pointAt ? px2vw(gap * index - 0.57 * gap) : px2vw(gap * index)
 }
 </script>
 
@@ -42,9 +42,12 @@ function getLeft(index) {
 </template>
 
 <style scoped lang="scss">
-.count-to > div {
-  position: relative;
-  display: flex;
+.count-to {
+  font-size: v-bind('px2vw(props.fontSize)');
+  & > div {
+    position: relative;
+    display: flex;
+  }
 }
 .list-enter-active,
 .list-leave-active {

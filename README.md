@@ -40,8 +40,8 @@ pnpm run build
      number.value = Math.floor(Math.random() * 1000)
    }, 1000)
    
-   <!-- gap是在设计稿中单个数字宽度的px数。如果传入的number是小数会自动保留两位处理 -->
-   <CountTo class="count-to" :number="number" gap="14"></CountTo>
+   <!-- fontSize为字体大小，必填。如果传入的number是小数会自动保留两位处理 -->
+   <CountTo class="count-to" :number="number" fontSize="24"></CountTo>
    ```
 
    #### 效果示例：

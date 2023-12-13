@@ -16,8 +16,8 @@ query()
 // 测试CountTo组件
 const number = ref()
 setInterval(() => {
-  number.value = Math.floor(Math.random() * 1000)
-}, 1000)
+  number.value = Math.floor(Math.random() * 1000) * 1.7
+}, 2000)
 // 测试waves指令
 const active = ref(0)
 // 测试导出接口
@@ -27,7 +27,7 @@ exportAPI()
 <template>
   <SvgIcon name="cell"></SvgIcon>
   <!-- gap是在设计稿中单个数字宽度的px数。如果传入的number是小数会自动保留两位处理 -->
-  <CountTo class="count-to" :number="number" gap="14"></CountTo>
+  <CountTo class="count-to" :number="number" fontSize="36"></CountTo>
   <div class="list">
     <div
       v-for="item in 5"
@@ -57,9 +57,6 @@ exportAPI()
 </template>
 
 <style scoped lang="scss">
-.count-to {
-  font-size: 24px;
-}
 .list {
   display: flex;
   gap: 10px;
