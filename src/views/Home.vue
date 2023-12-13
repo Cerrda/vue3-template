@@ -26,7 +26,6 @@ exportAPI()
 
 <template>
   <SvgIcon name="cell"></SvgIcon>
-  <div class="box"></div>
   <!-- gap是在设计稿中单个数字宽度的px数。如果传入的number是小数会自动保留两位处理 -->
   <CountTo class="count-to" :number="number" gap="14"></CountTo>
   <div class="list">
@@ -49,18 +48,15 @@ exportAPI()
     <div
       v-for="item in 5"
       :key="item"
-      class="item"
+      class="item special"
       :class="{ active: item - 1 === active }"
-      v-waves="['linear-gradient(219.31deg, #0ef 0%, #07f 100%)']"></div>
+      v-waves="['#ffffff50']">
+      按钮
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.box {
-  width: 20px;
-  height: 20px;
-  background-color: pink;
-}
 .count-to {
   font-size: 24px;
 }
@@ -73,6 +69,17 @@ exportAPI()
     border: 1px solid pink;
     width: 40px;
     height: 40px;
+  }
+  .special {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 60px;
+    background-color: #10b981;
+    color: #fff;
   }
 }
 </style>
