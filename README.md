@@ -18,7 +18,6 @@ pnpm run build
 - echarts
 - vue-echarts
 - vue-router
-- vue-routr
 - uuid
 - dayjs
 - prettier
